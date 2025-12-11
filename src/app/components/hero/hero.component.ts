@@ -1,11 +1,26 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { MatButton } from "@angular/material/button";
 
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [MatButton],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
-export class HeroComponent {
+export class HeroComponent implements AfterViewInit {
+@ViewChild('bgvideo') bgvideo! : ElementRef<HTMLVideoElement>;
+ngAfterViewInit() {
+    const video = this.bgvideo.nativeElement;
+    video.muted = true;
+    video.play().catch(err => console.log('autoplay blocked',err))
+    const t2 = gsap.timeline()
+    t2.from('.tag',{
+      color:'white',
+      duration:1,
+      ease:'back.in',
+      repeat:-1,
+      yoyo:true
+    })
+}
 
 }

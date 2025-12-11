@@ -1,9 +1,10 @@
 import { AfterViewInit, Component } from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import gsap from 'gsap'
+import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-navbar',
-  imports: [MatButton],
+  imports: [MatButton, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
