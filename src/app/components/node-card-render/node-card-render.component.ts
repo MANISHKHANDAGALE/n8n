@@ -13,10 +13,10 @@ import { FlowEditorComponentComponent } from '../flow-editor-component/flow-edit
 })
 export class NodeCardRenderComponent {
   cardContent = [
-    { title: "IT Ops can", description: "On-board new employees", imageUrl: "/iot.webp" },
-    { title: "Sec Ops can", description: "Enrich security incident tickets", imageUrl: "/secdevops.webp" },
-    { title: "Dev Ops can", description: "Convert natural language into API calls", imageUrl: "/devops.webp" },
-    { title: "Sales can", description: "Generate customer insights from reviews", imageUrl: "/sales.webp" },
+    { title: "IT Ops can", description: "On-board new employees", imageUrl: "./assets/images/iot.webp" },
+    { title: "Sec Ops can", description: "Enrich security incident tickets", imageUrl: "./assets/images/secdevops.webp" },
+    { title: "Dev Ops can", description: "Convert natural language into API calls", imageUrl: "./assets/images/devops.webp" },
+    { title: "Sales can", description: "Generate customer insights from reviews", imageUrl: "./assets/images/sales.webp" },
     { title: "Demo", description: "Move by yourself and explore", imageUrl: "" },
   ];
 
