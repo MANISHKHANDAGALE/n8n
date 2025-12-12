@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatButton } from "@angular/material/button";
 import gsap from 'gsap';
-import { Application } from '@splinetool/runtime';
+
 @Component({
   selector: 'app-hero',
   imports: [MatButton],
@@ -12,9 +12,8 @@ export class HeroComponent implements AfterViewInit {
 @ViewChild('bgvideo') bgvideo! : ElementRef<HTMLVideoElement>;
  @ViewChild('splineCanvas', { static: true })
   canvasRef!: ElementRef<HTMLCanvasElement>;
-  private app: any;
-ngAfterViewInit() : void {
-
+async ngAfterViewInit() {
+    const { Application } = await import('@splinetool/runtime');
     // const video = this.bgvideo.nativeElement;
     // video.muted = true;
     // video.play().catch(err => console.log('autoplay blocked',err))
@@ -62,9 +61,8 @@ ngAfterViewInit() : void {
       duration:1
     })
     const canvas = this.canvasRef.nativeElement;
-    this.app = new Application(canvas);
-    this.app
-      .load('https://prod.spline.design/ZAbdOQEK3F-0DYSv/scene.splinecode')
+    const app = new Application(canvas);
+     await app.load('https://prod.spline.design/ZAbdOQEK3F-0DYSv/scene.splinecode')
       .then(() => {
         console.log('Spline loaded successfully.');
       })
