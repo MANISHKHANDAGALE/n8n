@@ -1,0 +1,36 @@
+<div class="w-full  min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white flex p-6 lg:p-8">
+  <div class="max-w-8xl w-full mx-auto rounded-3xl overflow-hidden shadow-2xl border border-gray-700/50">
+    <div class="bg-gradient-to-br from-blue-950/40 to-indigo-950/40 backdrop-blur-sm  text-white w-full rounded-3xl  flex flex-col p-8 lg:p-5 justify-center">
+      <div class="flex  flex-row w-full animate-fadeIn -mt-1 space-x-2 overflow-x-auto  pb-4">
+        <!-- Angular *ngFor (replace your @for) -->
+        <ng-container *ngFor="let card of cardContent; trackBy: trackByFn">
+          <app-card [title]="card.title" [description]="card.description" [imageUrl]="card.imageUrl"
+            (clicked)="onCardClick(card)">
+            <!-- pass the lucide icon into ng-content slot -->
+            <lucide-angular [name]="zapIcon" class="w-5 h-5 text-black"></lucide-angular>
+          </app-card>
+        </ng-container>
+      </div>
+      <div class="w-full flex justify-center mt-8 lg:mt-10">
+        <div *ngIf="selectedCard?.title === demoTitleRender; else imagePreview" class="w-full flex justify-center animate-fadeIn">
+          <!-- render your flow editor or demo component in fixed area -->
+          <div class="w-full max-w-5xl h-[420px] lg:h-[520px] rounded-2xl overflow-hidden shadow-xl border border-gray-600/30 bg-gradient-to-br from-gray-900 to-white">
+            <app-flow-editor-component class="w-full h-full"></app-flow-editor-component>
+          </div>
+        </div>
+
+        <ng-template #imagePreview>
+          <!-- fixed preview box: keeps layout stable -->
+          <div class="w-full flex justify-center">
+            <div class="w-full max-w-2xl">
+              <img *ngIf="selectedImage" [src]="selectedImage" alt="selected" class="w-full object-cover rounded-2xl shadow-xl border border-gray-600/30 transition-all duration-500 hover:shadow-2xl" />
+              <!-- placeholder when no image -->
+              <div *ngIf="!selectedImage" class="text-white/40 text-center py-20 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-600/30">No preview available</div>
+            </div>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
